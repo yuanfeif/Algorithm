@@ -2,12 +2,15 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
-public class Assignment2_A {
+class code {
     public static void main(String[] args) {
         Comparator<Patient> Order = (o1, o2) -> {//比较器
-            int num_1 = o1.getPriority_num();
-            int num_2 = o2.getPriority_num();
-            return Integer.compare(num_2, num_1);
+            if(o1.getPriority_num() == o2.getPriority_num()){
+                return o1.getId()-o2.getId();
+            }
+            else {
+                return o2.getPriority_num()-o1.getPriority_num();
+            }
         };
         //代表三个医生的优先队列
         Queue<Patient> priorityQueue1 = new PriorityQueue<>(Order);

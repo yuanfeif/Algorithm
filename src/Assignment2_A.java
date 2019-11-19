@@ -2,13 +2,14 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
-public class code {
+public class Assignment2_A {
     public static void main(String[] args) {
-        Comparator<Patient> Order = (o1, o2) -> {
+        Comparator<Patient> Order = (o1, o2) -> {//比较器
             int num_1 = o1.getPriority_num();
             int num_2 = o2.getPriority_num();
             return Integer.compare(num_2, num_1);
         };
+        //代表三个医生的优先队列
         Queue<Patient> priorityQueue1 = new PriorityQueue<>(Order);
         Queue<Patient> priorityQueue2 = new PriorityQueue<>(Order);
         Queue<Patient> priorityQueue3 = new PriorityQueue<>(Order);
@@ -16,13 +17,14 @@ public class code {
         Scanner in = new Scanner(System.in);
         while (in.hasNext()) {
             int id = 0;
-            int t = in.nextInt();
-            for(int i = 0; i < t; i++){
-                String condition = in.next();
+            int t = in.nextInt();   //总的轮数
+            for(int i = 0; i < t; i++){    //“IN”“OUT”操作的次数
+                String condition = in.next();   //操作状态
                 if(condition.equals("IN")) {
                     id++;
-                    int doctorNum = in.nextInt();
-                    int priorityNum = in.nextInt();
+                    int doctorNum = in.nextInt();   //入队的医生编号
+                    int priorityNum = in.nextInt();    //优先级
+                    //不同医生编号入队
                     if(doctorNum == 1){
                         priorityQueue1.add(new Patient(doctorNum,priorityNum,id));
                     }
@@ -34,12 +36,11 @@ public class code {
                     }
                 }
                 else if(condition.equals("OUT")){
-                    int doctorNum = in.nextInt();
-                    Patient tmp;
+                    int doctorNum = in.nextInt();   //出队的医生编号
+                    //不同医生编号输出
                     if(doctorNum == 1){
                         if(!priorityQueue1.isEmpty()){
-                            tmp = priorityQueue1.poll();
-                            System.out.println(tmp.getId());
+                            System.out.println(priorityQueue1.poll().getId());
                         }
                         else {
                             System.out.println("EMPTY");
@@ -47,8 +48,7 @@ public class code {
                     }
                     else if(doctorNum == 2){
                         if(!priorityQueue2.isEmpty()){
-                            tmp = priorityQueue2.poll();
-                            System.out.println(tmp.getId());
+                            System.out.println(priorityQueue2.poll().getId());
                         }
                         else {
                             System.out.println("EMPTY");
@@ -56,8 +56,7 @@ public class code {
                     }
                     else if(doctorNum == 3){
                         if(!priorityQueue3.isEmpty()){
-                            tmp = priorityQueue3.poll();
-                            System.out.println(tmp.getId());
+                            System.out.println(priorityQueue3.poll().getId());
                         }
                         else {
                             System.out.println("EMPTY");
@@ -65,6 +64,10 @@ public class code {
                     }
                 }
             }
+            //清空队列
+            priorityQueue1.clear();
+            priorityQueue2.clear();
+            priorityQueue3.clear();
         }
 
 

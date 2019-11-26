@@ -1,8 +1,10 @@
+package Assignment2;
+
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
-class code {
+public class Assignment2_A {
     public static void main(String[] args) {
         Comparator<Patient> Order = (o1, o2) -> {//比较器
             if(o1.getPriority_num() == o2.getPriority_num()){
